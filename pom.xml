@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        SpringBoot框架版本要求。不同的版本有兼容性问题，所以SpringBoot写了一个父项目
+        在父项目中将常用各种框架依赖版本进行了锁定，后期使用SpringBoot内置集成好的组件框架只需要引入依赖，不需要引入版本
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>cn.sxt</groupId>
+    <artifactId>springboot-demo01-start</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!--jdk版本-->
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!--SpringBoot的启动器依赖
+            已经将SpringMVC框架集成相关的jar全部引入到项目
+            如 springmvc，jackson
+
+            启动器：
+                SpringBoot为框架写好的基础配置代码导入到项目，程序运行自动加载启动器内部的配置
+                将这个对应的框架或者依赖载入到项目中
+              启动器有两种
+                1，SpringBoot官方写好的启动
+                    spring-boot-starter-xxx(框架或者依赖)
+                2，其他框架对象SpringBoot的集成
+                    xxx-spring-boot-starter
+                    如： mybatis-spring-boot-starter
+                        druid-spring-boot-starte
+
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--SpringBoot的测试模块-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <!--排除单元测试-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--SpringBoot启动的插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
