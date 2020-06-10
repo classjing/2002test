@@ -48,10 +48,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class Application {
 
     public static void main(String[] args) {
-        /**
-         * SpringApplication ：
-         * SpringBoot框架的核心启动类型
-         */
 
         SpringApplication.run(Application.class, args);
     }
